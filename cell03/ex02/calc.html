@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        :is(input, select, button) {
+            font-size: 1.2rem;
+            padding: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            outline: none;
+        }
+
+        #oper {
+            margin: 0 2rem;
+            border-radius: 40px;
+            background-color: #fff;
+        }
+
+        #btn {
+            margin-left: 2rem;
+            background-color: greenyellow;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calc">
+        <input type="text" id="left">
+        <select name="" id="oper">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="text" id="right">
+        <button type="submit" id="btn">Try me!!!!!!</button>
+    </div>
+
+    <script>
+
+        const btn = document.querySelector('#btn');
+
+        btn.addEventListener('click', function () {
+            let leftInput = parseInt(document.querySelector('#left').value);
+            let rightInput = parseInt(document.querySelector('#right').value);
+            let operator = document.querySelector('#oper').value;
+            
+
+            if (isNaN(leftInput) || isNaN(rightInput) || leftInput < 0 || rightInput < 0) {
+                alert('Error :(');
+                return;
+            }
+            let result;
+            switch (operator) {
+                case '+':
+                    result = leftInput + rightInput;
+                    break;
+                case '-':
+                    result = leftInput - rightInput;
+                    break;
+                case '*':
+                    result = leftInput * rightInput;
+                    break;
+                case '/':
+                    if (rightInput === 0) {
+                        alert("It's over 9000!");
+                        console.log("It's over 9000!");
+                        return;
+                    }
+                    result = leftInput / rightInput;
+                    break;
+                case '%':
+                if (rightInput === 0) {
+                        alert("It's over 9000!");
+                        console.log("It's over 9000!");
+                        return;
+                    }
+                    result = leftInput % rightInput;
+                    break;
+                    return;
+            }
+            alert('result : ' + result);
+            console.log('result : ' + result);
+        })
+
+        setInterval(() => {
+            alert('Please, use me...');
+        }, 30000);
+
+    </script>
+
+</body>
+
+</html>
